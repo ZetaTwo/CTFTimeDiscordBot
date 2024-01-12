@@ -61,8 +61,13 @@ resource "google_cloudfunctions2_function" "ctftime_discord_events" {
   service_config {
     service_account_email = google_service_account.account.email
 
+    max_instance_count = 1
+    available_memory   = "256M"
+    timeout_seconds    = 60
+
     environment_variables = {
-      DISCORD_WEBHOOK = local.discord_webhook_url
+      DISCORD_BOT_TOKEN  = local.discord_bot_token
+      DISCORD_CHANNEL_ID = local.discord_channel_id
     }
   }
 }

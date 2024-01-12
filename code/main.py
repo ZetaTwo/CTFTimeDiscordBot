@@ -6,10 +6,10 @@ from CTFtimeDiscordHooks import send_updates
 
 @functions_framework.http
 def ctftime_discord_events(request):
-    webhook_url = os.environ['DISCORD_WEBHOOK']
+    channel_id = int(os.environ['DISCORD_CHANNEL_ID'])
+    token = os.environ['DISCORD_BOT_TOKEN']
 
     days = 7
     max_entries = 100
-    webhooks = [webhook_url]
-    send_updates(webhooks=webhooks, max_ctfs=max_entries, days=days, cache_path=None)
+    send_updates(channel_id=channel_id, token=token, max_ctfs=max_entries, days=days, cache_path=None)
     return "ok"
