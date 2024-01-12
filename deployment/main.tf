@@ -4,13 +4,15 @@ terraform {
 
 locals {
   region = "us-central1"
-  # discord_webhook_url = "" # defined in secrets.tf
+  zone   = "us-central1-b"
+  # discord_bot_token = "..." # defined in secrets.tf
+  # discord_channel_id = "..." # defined in secrets.tf
 }
 
 provider "google-beta" {
   project = "ctf-discord"
   region  = local.region
-  zone    = "us-central1-b"
+  zone    = local.zone
 }
 
 resource "google_service_account" "account" {
