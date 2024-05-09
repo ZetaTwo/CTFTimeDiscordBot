@@ -50,7 +50,7 @@ resource "google_cloudfunctions2_function" "ctftime_discord_events" {
 
   build_config {
     entry_point = "ctftime_discord_events"
-    runtime     = "python311"
+    runtime     = "python312"
 
     source {
       storage_source {
